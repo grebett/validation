@@ -269,8 +269,8 @@ func checkType(validator *Validator, valueToTest interface{}, errors *[]*DataErr
 		}
 	default:
 		if _type := reflect.TypeOf(valueToTest); _type != nil && _type.String() != validator.Type {
-			// bson.ObjectId is match as a string, let's try to save them off the error pit
-			if _type.String() == "string" && bson.IsObjectIdHex(valueToTest.(string)) {
+			// bson.ObjectId is match as a string, let's try to save them off the error pireflect.TypeOf(valueToTest)reflect.TypeOf(valueToTest)t
+			if _type.String() == "string" && bson.IsObjectIdHex(valueToTest.(string)) && validator.Type == "bson.ObjectId" {
 				return true
 			} else {
 				// ok, let'em fall
